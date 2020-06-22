@@ -5,5 +5,5 @@ COPY ./config.yaml /config.yaml
 COPY ./metrics /metrics
 RUN wget -O speedtest-cli https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py \
  && chmod +x speedtest-cli
-
+EXPOSE 9400
 CMD ["/cmd", "--config", "/config.yaml"]
