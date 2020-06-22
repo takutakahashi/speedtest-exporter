@@ -8,9 +8,9 @@ proc = subprocess.run("./speedtest-cli --simple",
                       shell=True, stdout=PIPE, stderr=PIPE, encoding="UTF-8")
 result = proc.stdout.split("\n")[:-1]
 name = "speedtest"
-values = [{"labels": {"type": a[0][:-1]}, "value": a[1]} for a in [a.split(" ") for a in result]]
+values = [{"labels": {"type": a[0][:-1]}, "value": float(a[1])} for a in [a.split(" ") for a in result]]
 output = {
         "name": name,
         "values": values
         }
-print(json.dumps(output))
+print(json.dumps(output), end='')
